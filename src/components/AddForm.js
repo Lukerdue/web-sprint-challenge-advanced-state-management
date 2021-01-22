@@ -1,14 +1,48 @@
 import React from 'react';
+import { postSmurf } from '../actions/index';
+import { connect } from 'react-redux';
 
 class AddForm extends React.Component {
+    constructor(){
+        super();
+        this.state={
+            newSmurf: {
+                name: "",
+                nickName: "",
+                role: "",
+                desc: "",
+            }
+        }
+    }
+    
+
+    handleChange = (e)=>{
+        this.setState({newSmurf: {
+            ...this.state.newSmurf,
+            [e.target.id]: e.target.value
+        }})
+    }
+
+    handleSubmit=(e)=>{
+        e.preventDefault();
+        this.props.postSmurf(this.state.newSmurf);
+    }
 
     render() {
+        console.log(this.props)
+        console.log(this.state)
         return(<section>
             <h2>Add Smurf</h2>
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
+                    <input onChange={this.handleChange} name="name" id="name" value={this.state.newSmurf.name}/>
+                    <label htmlFor="nickName">NickName:</label><br/>
+                    <input onChange={this.handleChange} name="nickName" id="nickName" value={this.state.newSmurf.nickName}/>
+                    <label htmlFor="role">Role:</label><br/>
+                    <input onChange={this.handleChange} name="role" id="role" value={this.state.newSmurf.role}/>
+                    <label htmlFor="desc">Description:</label><br/>
+                    <input onChange={this.handleChange} name="desc" id="desc" value={this.state.newSmurf.desc}/>
                 </div>
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
@@ -18,7 +52,14 @@ class AddForm extends React.Component {
     }
 }
 
-export default AddForm;
+const mapStateToProps = (state)=>{
+    return{
+        error: state.error,
+        isFetching: state.isFetching
+    }
+}
+
+export default connect(mapStateToProps, { postSmurf })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.
@@ -28,7 +69,7 @@ export default AddForm;
 //      - an array of smurfs
 //      - a boolean indicating if the app is loading
 //      - error text
-//      - MAKE SURE TO CORRECTLY CONNECT LABELS TO YOUR FORM INPUTS. USE THE PATERN OF SHOWN FOR NAME.
+//      - MAKE SURE TO CORRECTLY CONNECT LABELS TO YOUR FORM INPUTS. USE THE PATTERN OF SHOWN FOR NAME.
 //5. Build eventhandler and listener needed to change the state.
 //6. Build eventhandler and listener needed to submit a new smurf and dispatch it's assosated action.
 //7. Ensure that the included alert code only displays when error text is passed in from redux.
