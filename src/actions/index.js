@@ -1,5 +1,31 @@
 import axios from 'axios';
 
+export const getSmurfs= () =>dispatch=>{
+    dispatch({ type:"API_START" })
+    axios.get('http://localhost:3333/smurfs')
+    .then(res=>{
+        dispatch({ type:"API_GOOD", payload: res.data })
+    })
+    .catch(drama=>{
+        dispatch({ type: "API_BAD", payload: drama})
+    })
+}
+
+export const postSmurf= (smurf)=> dispatch =>{
+    dispatch({ type: "API_START" })
+    axios.post("http://localhost:3333/smurfs", smurf)
+    .then(res=>{
+        getSmurfs();
+    })
+    .catch(drama=>{
+        dispatch({ type: "API_BAD", payload: drama})
+    })
+}
+
+export const err = (error) =>dispatch=>{
+    dispatch({ type: "ERR", payload: error})
+}
+
 //Task List:
 //1. Add fetch smurfs action: 
 //              - fetch and return initial list of smurfs

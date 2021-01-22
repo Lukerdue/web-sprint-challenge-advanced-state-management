@@ -1,8 +1,36 @@
 
 export const initialState = {
+    smurfs: [],
+    isFetching: false;
+    error: "",
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action)=>{
+    switch(action.type){
+        case "API_START":
+            return{
+                ...state,
+                isFetching: true,
+            };
+        case "API_GOOD":
+            return{
+                ...state,
+                isFetching: false,
+                smurfs: [action.payload]
+            }
+        case "API_BAD":
+            return{
+                ...state,
+                isFetching: false,
+                error: action.payload
+            }
+        case "ERR":
+            return{
+                ...state, 
+                error: action.payload
+            }
+        default: return state
+    }
 }
 
 export default reducer;
