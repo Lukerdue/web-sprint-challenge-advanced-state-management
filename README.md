@@ -23,10 +23,24 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
+context API bridges the gap between application state, and component level state. It makes states that can be passed through component trees rather than connecting to a global state or prop drilling. But you can only access it in that component tree.
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+actions a functions that return an action object to be dispatched to the reducer, a reducer is a function that manages and returns the state object, and the store creates the globally accessible state to be passed in to your app through the provider. Its the 'single source of truth' because every app can acess it and it has all the state you need. a single source. Of truth.
+
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is globally accessible throughout your app with things like redux, and component states can't be accessed outside of that component unless you pass props down through component trees (prop drilling). Component state is really good for managing forms, or really small applications with only 2 or 3 peices of state to manage. Application state is good for pretty much everything else.
+
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+redux thunk lets us do async calls with redux that's syncronous without it. The action creator change to take in the dispatch and dispatch actions sequntially instead of letting connect dispatch them one at a time, as we had been doing previously.
+
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+I like redux better this week. I know it was harder to learn but it just makes sense to hold all your state outside of the application and only connect what components actually need it. context API is great and all but its the work of redux without the payoff. You make all the files but then only one component tree can acess the data so, i'd rather use redux.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
