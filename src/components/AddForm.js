@@ -8,9 +8,9 @@ class AddForm extends React.Component {
         this.state={
             newSmurf: {
                 name: "",
-                nickName: "",
-                role: "",
-                desc: "",
+                nickname: "",
+                position: "",
+                description: "",
             }
         }
     }
@@ -35,12 +35,12 @@ class AddForm extends React.Component {
                 <div className="form-group">
                     <label htmlFor="name">Name:</label><br/>
                     <input onChange={this.handleChange} name="name" id="name" value={this.state.newSmurf.name}/>
-                    <label htmlFor="nickName">NickName:</label><br/>
-                    <input onChange={this.handleChange} name="nickName" id="nickName" value={this.state.newSmurf.nickName}/>
-                    <label htmlFor="role">Role:</label><br/>
-                    <input onChange={this.handleChange} name="role" id="role" value={this.state.newSmurf.role}/>
-                    <label htmlFor="desc">Description:</label><br/>
-                    <input onChange={this.handleChange} name="desc" id="desc" value={this.state.newSmurf.desc}/>
+                    <label htmlFor="nickname">NickName:</label><br/>
+                    <input onChange={this.handleChange} name="nickname" id="nickname" value={this.state.newSmurf.nickname}/>
+                    <label htmlFor="position">position:</label><br/>
+                    <input onChange={this.handleChange} name="position" id="position" value={this.state.newSmurf.position}/>
+                    <label htmlFor="description">Description:</label><br/>
+                    <input onChange={this.handleChange} name="description" id="description" value={this.state.newSmurf.description}/>
                 </div>
 
                 {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>}

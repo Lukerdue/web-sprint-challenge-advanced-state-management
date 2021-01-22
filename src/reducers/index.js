@@ -16,7 +16,7 @@ const reducer = (state = initialState, action)=>{
             return{
                 ...state,
                 isFetching: false,
-                smurfs: [action.payload]
+                smurfs: action.payload
             }
         case "API_BAD":
             return{

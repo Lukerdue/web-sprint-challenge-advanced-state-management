@@ -15,10 +15,17 @@ export const postSmurf= (smurf)=> dispatch =>{
     dispatch({ type: "API_START" })
     axios.post("http://localhost:3333/smurfs", smurf)
     .then(res=>{
-        getSmurfs();
+        axios.get('http://localhost:3333/smurfs')
+        .then(res=>{
+            dispatch({ type:"API_GOOD", payload: res.data })
+        })
+        .catch(drama=>{
+            dispatch({ type: "API_BAD", payload: drama})
+        })
     })
     .catch(drama=>{
-        dispatch({ type: "API_BAD", payload: drama})
+        debugger
+        dispatch({ type: "API_BAD", payload: JSON.stringify(drama.error)})
     })
 }
 
