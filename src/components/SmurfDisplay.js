@@ -8,7 +8,6 @@ export class SmurfDisplay extends React.Component {
         this.props.getSmurfs()
     }
     render() {
-        console.log(this.props)
         return(<div>
             {this.props.isFetching ? <p>Loading...</p>:
             this.props.smurfs.map(smurf=>{

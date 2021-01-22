@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 class Smurf extends React.Component {
     render() {
         const { smurf } = this.props;
-        console.log(smurf)
         return(<div data-testid="smurf" className="card">
             <h3>{this.props.smurf.name}</h3>
             <p>{this.props.smurf.nickname}</p>

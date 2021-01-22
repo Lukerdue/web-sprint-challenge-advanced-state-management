@@ -29,6 +29,7 @@ class AddForm extends React.Component {
     }
 
     render() {
+        console.log(this.props.error)
         return(<section>
             <h2>Add Smurf</h2>
             <form onSubmit={this.handleSubmit}>
@@ -43,7 +44,7 @@ class AddForm extends React.Component {
                     <input onChange={this.handleChange} name="description" id="description" value={this.state.newSmurf.description}/>
                 </div>
 
-                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>}
+                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error}</div>}
                 <button>Submit Smurf</button>
             </form>
         </section>);

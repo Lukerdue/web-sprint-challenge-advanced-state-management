@@ -7,7 +7,7 @@ export const getSmurfs= () =>dispatch=>{
         dispatch({ type:"API_GOOD", payload: res.data })
     })
     .catch(drama=>{
-        dispatch({ type: "API_BAD", payload: drama})
+        dispatch({ type: "API_BAD", payload: drama.message})
     })
 }
 
@@ -20,12 +20,12 @@ export const postSmurf= (smurf)=> dispatch =>{
             dispatch({ type:"API_GOOD", payload: res.data })
         })
         .catch(drama=>{
-            dispatch({ type: "API_BAD", payload: drama})
+            dispatch({ type: "API_BAD", payload: drama.message})
         })
     })
     .catch(drama=>{
-        debugger
-        dispatch({ type: "API_BAD", payload: JSON.stringify(drama.error)})
+        console.log(drama.message)
+        dispatch({ type: "API_BAD", payload: drama.message})
     })
 }
 
