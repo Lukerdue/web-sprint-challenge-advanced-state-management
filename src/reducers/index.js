@@ -1,7 +1,7 @@
 
 export const initialState = {
     smurfs: [],
-    isFetching: false;
+    isFetching: false,
     error: "",
 }
 
